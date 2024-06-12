@@ -1,0 +1,16 @@
+INFO     t0515.common.recodelog:conftest.py:13 -----------接口开始执行----------
+INFO     t0515.common.recodelog:sendRequest.py:87 接口名称:login
+INFO     t0515.common.recodelog:sendRequest.py:88 接口请求地址:http://127.0.0.1:8787/dar/user/login
+INFO     t0515.common.recodelog:sendRequest.py:89 请求方法：post
+INFO     t0515.common.recodelog:sendRequest.py:90 测试用例：正确用户名和密码
+INFO     t0515.common.recodelog:sendRequest.py:91 请求头：{'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
+INFO     t0515.common.recodelog:sendRequest.py:92 cookies :{'session': 12313123}
+INFO     t0515.common.recodelog:sendRequest.py:97 请求参数：{'data': {'user_name': 'test01', 'passwd': 'admin123'}}
+INFO     t0515.common.recodelog:sendRequest.py:58 cookie：{'Cookie': {'access_token_cookie': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxODAzODA1OCwianRpIjoiZDU2MzUxY2MtM2JjNC00ZmMyLWJjNGQtNzYwYjA5YTcwMTIwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImV4YW1wbGVfdXNlciIsIm5iZiI6MTcxODAzODA1OCwiZXhwIjoxNzE4MDM4OTU4fQ.vppibQ6dq-UEQTIiUOJdEVTq1bpX-wZkOwFcDoaAvRA'}}
+INFO     t0515.common.recodelog:sendRequest.py:59 接口实际返回信息：{"error_code":null,"msg":"登录成功","msg_code":200,"orgId":"6140913758128971280","token":"8d5BcAe1df3D586BA680a82cAdff7","userId":"4667307247519303122"}
+
+INFO     t0515.common.recodelog:apiutil.py:123 json提取到的参数为：{'token': '8d5BcAe1df3D586BA680a82cAdff7'}
+INFO     t0515.common.recodelog:assertions.py:40 字符串包含断言成功：，预期结果【登录成功】，实际结果【登录成功】
+INFO     t0515.common.recodelog:assertions.py:66 相等断言成功，预期结果{'msg': '登录成功'},等于实际结果{'msg': '登录成功'}
+INFO     t0515.common.recodelog:assertions.py:175 测试成功
+INFO     t0515.common.recodelog:conftest.py:15 ------------接口执行结束-----------
