@@ -4,6 +4,7 @@ from t0515.base.apiutil import BaseRequest
 import allure
 
 @allure.feature("获品列表")
+@pytest.mark.unserManager
 class TestLogin:
     @allure.story("获取商品列表")
     @pytest.mark.parametrize('params',get_testcase_yaml("./testcase/productManager/getProductList.yaml"))

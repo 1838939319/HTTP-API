@@ -6,9 +6,10 @@ import allure
 @allure.feature("用户登录接口")
 class TestLogin:
     @allure.story("正确用户名和密码校验")
-    @pytest.mark.parametrize('params',get_testcase_yaml("./testcase/Login/login.yaml"))
-    def test_case01(self,params):
-         BaseRequest().specification_yaml(params)
+    @pytest.mark.parametrize("base_info,test_case",get_testcase_yaml("./testcase/Login/login.yaml"))
+    def test_case01(self,base_info,test_case):
+        allure.dynamic.title(base_info["case_name"])
+        BaseRequest().specification_yaml(base_info,test_case)
 
     # @allure.story("错误用户名和密码校验")
     # @pytest.mark.parametrize('params', get_testcase_yaml("./testcase/Login/login.yaml"))

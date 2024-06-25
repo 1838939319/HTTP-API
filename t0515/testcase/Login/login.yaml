@@ -12,7 +12,7 @@
         user_name: test01
         passwd: admin123
       validation:
-        - contains: {'msg': '登录成功'}
+        - contains: {'msg': '登录失败'}
         - contains: {'status_code': 200}
         - eq: {'msg': '登录成功'}
 #        - ne: {'msg': '登录成功'}

@@ -42,7 +42,7 @@ class BaseRequest:
             data= str_data
         return data
 
-    def specification_yaml(self,case_info):
+    def specification_yaml(self,base_info,case_info):
         """
         规范yaml接口测试数据的写法
         :param case_info:list类型
@@ -52,32 +52,54 @@ class BaseRequest:
         params_type = ['params','data','json']
         try:
             base_url = self.conf.get_apienv_data('host')
-            url = base_url+case_info["baseInfo"]["url"]
+            url = base_url+base_info["url"]
             allure.attach(url,f"接口地址:{url}")
-            api_name = case_info["baseInfo"]["api_name"]
+            api_name = base_info["api_name"]
             allure.attach(api_name,f"接口名称:{api_name}")
-            method= case_info["baseInfo"]["method"]
+            method= base_info["method"]
             allure.attach(method,f"请求方式:{method}")
-            header = case_info["baseInfo"]["header"]
+            header = base_info["header"]
             allure.attach(str(header),f"请求头：{header}",allure.attachment_type.TEXT)
             try:
-                cookies = self.replace_load(case_info["baseInfo"]["cookies"])
+                cookies = self.replace_load(base_info["cookies"])
                 allure.attach(str(cookies),f"cookie:{cookies}",allure.attachment_type.TEXT)
             except:
                 pass
-            for tc in case_info['testCase']:
-                case_name = tc.pop('case_name')
-                allure.attach(case_name,f"测试用例名称：{case_name}")
-                validation = tc.pop('validation')
-                allure.attach(str(validation),f"预期断言结果",allure.attachment_type.TEXT)
-                extract = tc.pop('extract',None) #存在则返回结果，不存在该字段则返回None
-                extract_list = tc.pop('extract_list', None)
+            case_name = case_info.pop('case_name')
+            allure.attach(case_name, f"测试用例名称：{case_name}")
+            # 断言处理
+            validation = self.replace_load(case_info.get('validation'))
+            case_info["validation"] = validation
+            allure.attach(str(validation), f"预期断言结果", allure.attachment_type.TEXT)
+            case_info.pop("validation")
+            # 处理参数提取
+            extract = case_info.pop("extract", None)
+            extract_list = case_info.pop("extract_list", None)
+            # 处理接口的请求参数
+            for key, value in case_info.items():
+                if key in params_type:
+                    case_info[key] = self.replace_load(value)
+            # 处理上传文件
+            file, files = case_info.pop("files", None), None
+            if file is not None:
+                for k, v in file.items():
+                    allure.attach(json.dumps(file), "导入文件")
+                    files = {k: open(v, mode="rb")}
 
 
-                for key,value in tc.items():
-                    if key in params_type:
-                        tc[key] = self.replace_load(value)
-                res = self.send.run_main(name=api_name,url=url,case_name=case_name,headers=header,method=method,cookies=cookies,files=None,**tc)
+            # for tc in case_info['testCase']:
+            #     case_name = tc.pop('case_name')
+            #     allure.attach(case_name,f"测试用例名称：{case_name}")
+            #     validation = tc.pop('validation')
+            #     allure.attach(str(validation),f"预期断言结果",allure.attachment_type.TEXT)
+            #     extract = tc.pop('extract',None) #存在则返回结果，不存在该字段则返回None
+            #     extract_list = tc.pop('extract_list', None)
+            #
+            #
+            #     for key,value in tc.items():
+            #         if key in params_type:
+            #             tc[key] = self.replace_load(value)
+                res = self.send.run_main(name=api_name,url=url,case_name=case_name,headers=header,method=method,cookies=cookies,files=None,**case_info)
                 res_text = res.text
                 allure.attach(res.text,f"接口响应信息：",allure.attachment_type.TEXT)
                 allure.attach(str(res.status_code),f"接口响应状态：{res.status_code}",allure.attachment_type.TEXT)

@@ -13,7 +13,16 @@ def get_testcase_yaml(file):
     try:
         with open(file,'r',encoding='utf-8')as f:
             yaml_data=yaml.safe_load(f)
-            return yaml_data
+            testcase_list = []
+            if len(yaml_data) <= 1:
+                data = yaml_data[0]
+                base_info = data.get("baseinfo")
+                for tc in data.get("testCase"):
+                    params = [base_info,tc]
+                    testcase_list.append(params)
+                return testcase_list
+            else:
+                return yaml_data
     except Exception as e:
         print(e)
 
