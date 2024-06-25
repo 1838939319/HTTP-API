@@ -1,0 +1,27 @@
+ERROR - 2024-06-13 00:54:33,224 - operationCsv.py -[operationCsv:get_csv_data - [Errno 2] No such file or directory: 'E:\\pycharm\\httpApi\\t0515\\common\\test.csv'
+ERROR - 2024-06-13 00:55:08,845 - operationCsv.py -[operationCsv:get_csv_data - [Errno 2] No such file or directory: 'E:\\pycharm\\httpApi\\t0515\\conf\\test.csv'
+INFO - 2024-06-13 00:58:02,216 - conftest.py -[conftest:function_test - -----------接口开始执行----------
+INFO - 2024-06-13 00:58:02,233 - sendRequest.py -[sendRequest:run_main - 接口名称:login
+INFO - 2024-06-13 00:58:02,233 - sendRequest.py -[sendRequest:run_main - 接口请求地址:http://127.0.0.1:8787/dar/user/login
+INFO - 2024-06-13 00:58:02,234 - sendRequest.py -[sendRequest:run_main - 请求方法：post
+INFO - 2024-06-13 00:58:02,234 - sendRequest.py -[sendRequest:run_main - 测试用例：正确用户名和密码
+INFO - 2024-06-13 00:58:02,235 - sendRequest.py -[sendRequest:run_main - 请求头：{'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
+INFO - 2024-06-13 00:58:02,235 - sendRequest.py -[sendRequest:run_main - cookies :{'session': 12313123}
+INFO - 2024-06-13 00:58:02,236 - sendRequest.py -[sendRequest:run_main - 请求参数：{'data': {'user_name': 'test01', 'passwd': 'admin123'}}
+ERROR - 2024-06-13 00:58:04,290 - sendRequest.py -[sendRequest:send_request - 接口连接服务器异常
+INFO - 2024-06-13 00:58:04,946 - conftest.py -[conftest:function_test - ------------接口执行结束-----------
+INFO - 2024-06-13 00:58:04,955 - conftest.py -[conftest:function_test - -----------接口开始执行----------
+INFO - 2024-06-13 00:58:04,966 - sendRequest.py -[sendRequest:run_main - 接口名称:商品列表
+INFO - 2024-06-13 00:58:04,967 - sendRequest.py -[sendRequest:run_main - 接口请求地址:http://127.0.0.1:8787/coupApply/cms/goodsList
+INFO - 2024-06-13 00:58:04,967 - sendRequest.py -[sendRequest:run_main - 请求方法：get
+INFO - 2024-06-13 00:58:04,968 - sendRequest.py -[sendRequest:run_main - 测试用例：获取商品列表
+INFO - 2024-06-13 00:58:04,968 - sendRequest.py -[sendRequest:run_main - 请求头：{'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
+INFO - 2024-06-13 00:58:04,968 - sendRequest.py -[sendRequest:run_main - cookies :{'session': 12313123}
+INFO - 2024-06-13 00:58:04,970 - sendRequest.py -[sendRequest:run_main - 请求参数：{'params': {'msgType': 'getHandsetListOfCust', 'page': 1, 'size': 20}}
+ERROR - 2024-06-13 00:58:07,010 - sendRequest.py -[sendRequest:send_request - 接口连接服务器异常
+INFO - 2024-06-13 00:58:07,436 - conftest.py -[conftest:function_test - ------------接口执行结束-----------
+INFO - 2024-06-13 00:58:07,471 - conftest.py -[conftest:function_test - -----------接口开始执行----------
+ERROR - 2024-06-13 00:58:07,483 - apiutil.py -[apiutil:specification_yaml - 'NoneType' object is not subscriptable
+INFO - 2024-06-13 00:58:07,529 - conftest.py -[conftest:function_test - ------------接口执行结束-----------
+INFO - 2024-06-13 00:58:07,537 - conftest.py -[conftest:function_test - -----------接口开始执行----------
+INFO - 2024-06-13 00:58:07,539 - conftest.py -[conftest:function_test - ------------接口执行结束-----------
